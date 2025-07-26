@@ -1,44 +1,100 @@
-# weather-forecast-website
+# Weather Forecast Website
 
-The Melbourne Weather Forecast Website project is a full-stack web application that combines machine learning models, a FastAPI back-end, and a React-based front-end to provide visual analytics and weather forecasts. The architecture's primary components are specified below:
+Project Overview 
+The Weather Forecast Website is a complete web application developed to display weather forecasts, leveraging machine learning models for precise predictions. The project is structured with a React-based front-end for user interaction and a Python-based back-end that handles data processing and serves the ML predictions.  
+ 
+Project Structure 
+group 9-Nein-Weather Forecast Website/ 
+├── backend/ 
+│   ├── __pycache__/ 
+│   ├── main.py               # Main server file 
+│   ├── model.py              # Contains ML model logic 
+│   ├── utils.py              # Utility functions for data processing 
+│   ├── merged_data.csv       # Processed data for training or analysis 
+│   ├── new_merged_data.csv   # Additional dataset for the model 
+│   ├── rain_model.pkl        # Pre-trained model for rain prediction 
+│   ├── temp_model.pkl        # Pre-trained model for temperature prediction 
+│   ├── randomforest_model.pkl # Random Forest model for feature analysis 
+│   └── ... (other model and configuration files) 
+├── frontend/ 
+│   ├── public/ 
+│   │   ├── index.html        # Main HTML file 
+│   │   └── ... (assets) 
+│   ├── src/ 
+│   │   ├── App.js            # Main React component 
+│   │   ├── index.js          # Entry point for React 
+│   │   ├── TemperaturePage.js # Page component for temperature display 
+│   │   └── WeatherTypePage.js # Page component for weather type display 
+│   ├── package.json          # Node.js dependencies 
+│   └── package-lock.json 
+└── .venv/                    # Python virtual environment (local use) 
 
-1. Front-End 
-React JS is used to design the front end and create dynamic and responsive UI.
+Technologies Used 
+•	Front-End: React.js, Chart.js, Axios
+•	Back-End: FastAPI, Uvicorn, Python 
+•	Machine Learning: scikit-learn, numpy, joblib 
 
-Key Components:
-- App.js: Main App component that allows routing/navigation between the other components/pages
-- TemperaturePage.js: Component for rendering temperature and precipitation forecast data and visualization
-- WeatherTypePage.js: Component for rendering weather-type forecast data and visualization
+Setup Instructions 
+Backend Setup 
+1.	Navigate to the backend Directory: 
+```
+bash 
+cd backend 
+```
+2.	Install Required Packages and Dependencies: Run the following command to install essential Python packages: 
+``` 
+bash 
+pip3 install -r requirements.txt 
+```
+3.	Run the Model Script: Execute the model script to ensure the model is prepared and integrated properly. 
+```
+bash 
+python3 model.py 
+```
+4.	Start the FastAPI Server: Run the following command to start the FastAPI server with live reload: 
+```
+bash 
+uvicorn main:app --reload 
+```
+The server should start on http://127.0.0.1:8000. 
+Frontend Setup 
+1.	Navigate to the frontend Directory: 
+```
+bash 
+cd ../frontend 
+```
+2.	Install Frontend Dependencies: Run these commands to install necessary npm packages: 
+```
+bash 
+npm install react react-dom react-router-dom @mui/material @mui/icons-material @mui/lab @fontsource/roboto chart.js chartjs-plugin-datalabels chartjs-plugin-zoom date-fns axios html2canvas jspdf
+```
+3.	Start the Frontend Development Server: After installation, you can start the React development server with: 
+```
+bash 
+npm start 
+	```
+The front-end application should be available on http://localhost:3000. 
 
-In each main component or page: 
-- User Input Forms: choose target dates for temperature, precipitation, and weather categorisation predictions 
-- Data Visualization: present findings as line charts for hourly temperatures, bar charts for monthly trends, and pie charts for weather type classification, Chart.js is used with several plugins for increased usability.
-- PDF Export: Users can export the displayed chart to a PDF using html2canvas and jsPDF.
+Configuration for AI Model Integration 
+•	Model Loading: Verify that model.py loads models correctly and main.py has routes set for API calls. 
+•	Preprocessing: The utils.py file should handle any data preprocessing before model input. 
+•	Data Files: Ensure data files like merged_data.csv are formatted properly. 
+Running the Application 
+1.	Start the back-end server: 
+```
+bash 
+cd backend 
+uvicorn main:app --reload 
+```
+2.	Start the front-end development server: 
+```
+bash 
+cd ../frontend 
+npm start 
+```
+3.	Access the application: Open your browser and navigate to http://localhost:3000 to use the web application. 
 
----
-
-2. Back-End
-FastAPI is used to create the back-end due to its outstanding performance, ease of creating APIs, and smooth interaction with Python libraries and machine learning models.
-
-Responsibilities:
-- API Endpoints: Controlled by Axios, the back end makes available API routes that the front end can access through HTTP queries.
-- Data Processing and Validation: Provide reliable data handling, the tool prepares incoming data for model predictions and verifies user input.
-- Batch Processing: To reduce server load and response time, batch requests manage date periods for efficiency.
-
----
-
-3. AI Model Components
-Three machine-learning models addressing various facets of weather forecasting are integrated into the program:
-- Temperature Prediction Model: To forecast minimum, maximum, and hourly temperatures of a given day
-- Precipitation Prediction Model: To forecast precipitation of a given day as well as the total monthly amount.
-- Weather Type Classification Model: To categorize weather types of each day within a given date range.
-The models are trained in model.py and loaded as .pkl files in the backend directory.
-
----
-
-Overall Flow:
-1. User Interaction: Through the frontend interface, users choose dates and weather analysis settings.
-2. Request Handling: The front end sends an HTTP POST and GET request containing the input data to the FastAPI back-end via Axios.
-3. Model Processing: After processing the input and loading the appropriate machine learning model, the back-end generates and returns predictions.
-4. Response: The front end receives the processed results in JSON format.
-5. Data Visualization: Using Chart.js, the front end shows the prediction results. Users can interact with the charts and export the data if necessary.
+Troubleshooting 
+•	Ensure that your Python and Node.js versions meet the requirements. 
+•	If the server fails to start, verify that all required dependencies are installed and that your environment variables are set up correctly. Refer to package.json and requirements.txt for any additional dependencies. 
+•	For any issues with data loading or processing, check the utils.py logs and ensure that the CSV files are formatted as expected. 
