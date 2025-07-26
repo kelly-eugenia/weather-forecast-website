@@ -1,41 +1,18 @@
 # Weather Forecast Website
 
-Project Overview 
+## Project Overview 
+
 The Weather Forecast Website is a complete web application developed to display weather forecasts, leveraging machine learning models for precise predictions. The project is structured with a React-based front-end for user interaction and a Python-based back-end that handles data processing and serves the ML predictions.  
- 
-Project Structure 
-group 9-Nein-Weather Forecast Website/ 
-├── backend/ 
-│   ├── __pycache__/ 
-│   ├── main.py               # Main server file 
-│   ├── model.py              # Contains ML model logic 
-│   ├── utils.py              # Utility functions for data processing 
-│   ├── merged_data.csv       # Processed data for training or analysis 
-│   ├── new_merged_data.csv   # Additional dataset for the model 
-│   ├── rain_model.pkl        # Pre-trained model for rain prediction 
-│   ├── temp_model.pkl        # Pre-trained model for temperature prediction 
-│   ├── randomforest_model.pkl # Random Forest model for feature analysis 
-│   └── ... (other model and configuration files) 
-├── frontend/ 
-│   ├── public/ 
-│   │   ├── index.html        # Main HTML file 
-│   │   └── ... (assets) 
-│   ├── src/ 
-│   │   ├── App.js            # Main React component 
-│   │   ├── index.js          # Entry point for React 
-│   │   ├── TemperaturePage.js # Page component for temperature display 
-│   │   └── WeatherTypePage.js # Page component for weather type display 
-│   ├── package.json          # Node.js dependencies 
-│   └── package-lock.json 
-└── .venv/                    # Python virtual environment (local use) 
 
-Technologies Used 
-•	Front-End: React.js, Chart.js, Axios
-•	Back-End: FastAPI, Uvicorn, Python 
-•	Machine Learning: scikit-learn, numpy, joblib 
+## Technologies Used 
+• Front-End: React.js, Chart.js, Axios
 
-Setup Instructions 
-Backend Setup 
+• Back-End: FastAPI, Uvicorn, Python 
+
+• Machine Learning: scikit-learn, numpy, joblib 
+
+## Setup Instructions 
+### Backend Setup 
 1.	Navigate to the backend Directory: 
 ```
 bash 
@@ -57,7 +34,9 @@ bash
 uvicorn main:app --reload 
 ```
 The server should start on http://127.0.0.1:8000. 
-Frontend Setup 
+
+
+### Frontend Setup 
 1.	Navigate to the frontend Directory: 
 ```
 bash 
@@ -72,14 +51,19 @@ npm install react react-dom react-router-dom @mui/material @mui/icons-material @
 ```
 bash 
 npm start 
-	```
+```
 The front-end application should be available on http://localhost:3000. 
 
-Configuration for AI Model Integration 
-•	Model Loading: Verify that model.py loads models correctly and main.py has routes set for API calls. 
-•	Preprocessing: The utils.py file should handle any data preprocessing before model input. 
-•	Data Files: Ensure data files like merged_data.csv are formatted properly. 
-Running the Application 
+
+### Configuration for AI Model Integration 
+• Model Loading: Verify that model.py loads models correctly and main.py has routes set for API calls. 
+
+• Preprocessing: The utils.py file should handle any data preprocessing before model input. 
+
+• Data Files: Ensure data files like merged_data.csv are formatted properly. 
+
+
+## Running the Application 
 1.	Start the back-end server: 
 ```
 bash 
@@ -94,7 +78,9 @@ npm start
 ```
 3.	Access the application: Open your browser and navigate to http://localhost:3000 to use the web application. 
 
-Troubleshooting 
-•	Ensure that your Python and Node.js versions meet the requirements. 
-•	If the server fails to start, verify that all required dependencies are installed and that your environment variables are set up correctly. Refer to package.json and requirements.txt for any additional dependencies. 
-•	For any issues with data loading or processing, check the utils.py logs and ensure that the CSV files are formatted as expected. 
+## Troubleshooting 
+• Ensure that your Python and Node.js versions meet the requirements. 
+
+• If the server fails to start, verify that all required dependencies are installed and that your environment variables are set up correctly. Refer to package.json and requirements.txt for any additional dependencies. 
+
+• For any issues with data loading or processing, check the utils.py logs and ensure that the CSV files are formatted as expected. 
